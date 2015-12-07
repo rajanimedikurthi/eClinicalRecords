@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src:  url('../icons/fonts/fontawesome-webfont.woff') ;
+    font-weight: normal;
+  font-style: normal;
+}
+
+.fi{
+  font: normal normal normal 24px/1 FontAwesome;
+   color: #318EC3;
+   display:inline-block;
+
+}
+.fi-plus:before{
+  content:"\f067";
+}
+h1{
+  color:red;
+}
