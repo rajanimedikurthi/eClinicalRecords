@@ -5,15 +5,24 @@
   font-style: normal;
 }
 
-.fi{
+.fa{
   font: normal normal normal 24px/1 FontAwesome;
    color: #318EC3;
    display:inline-block;
 
 }
-.fi-plus:before{
+.fa-plus:before{
   content:"\f067";
 }
+.fa-trash-o:before{
+  content: "\f014";
+  }
+  .fa-refresh:before{
+    content:"\f021";
+  }
+  .fa-download:before{
+      content: "\f019";
+  }
 h1{
   color:red;
 }
