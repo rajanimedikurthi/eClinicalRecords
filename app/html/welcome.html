@@ -1,17 +1,22 @@
 <html>
 <head>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="reset.css"></link>
   <link rel="stylesheet" href="mycss.css"></link>
+  <link rel="stylesheet" href="jquery/jquery-ui.css">
   <script src="jquery/jquery-1.11.3.js"></script>
-    <script src="myjs.js"></script>
+  <script src="jquery/jquery-ui.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
-<H1>  Welcome to EClinicalRecords </h1>
-<a class="fa fa-plus" id="addrecord">Add Patient </a>
-<a class="fa fa-trash-o" id="deleterecord">Delete Patient </a>
-<a class="fa fa-download" id="fetchrecord">Fetch Patient </a>
-<a class="fa fa-refresh" id="updaterecord">update Patient </a>
-  <img src="download.jpg"/>
-  <div id="content"></div>
+<H1 class="header">  Welcome to EClinicalRecords </h1>
+
+<div class="leftPanel">
+  <div class="fa patients"><span>My Patients</span></div>
+    <div class="fa appointments"><span>Appointments</span></div>
+</div>
+<div class="mainPanel">
+<div id="mainContent"></div>
+</div>
 </body>
 </html>

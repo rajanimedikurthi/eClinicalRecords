@@ -1,28 +1,152 @@
 @font-face {
-  font-family: 'FontAwesome';
-  src:  url('../icons/fonts/fontawesome-webfont.woff') ;
-    font-weight: normal;
-  font-style: normal;
+	font-family: 'FontAwesome';
+	src:  url('../icons/fonts/fontawesome-webfont.woff') ;
+	font-weight: normal;
+	font-style: normal;
 }
 
 .fa{
-  font: normal normal normal 24px/1 FontAwesome;
-   color: #318EC3;
-   display:inline-block;
+	font: normal normal normal 24px/1 FontAwesome;
+	color: #318EC3;
+	display:inline-block;
 
 }
 .fa-plus:before{
-  content:"\f067";
+	content:"\f067";
 }
 .fa-trash-o:before{
-  content: "\f014";
-  }
-  .fa-refresh:before{
-    content:"\f021";
-  }
-  .fa-download:before{
-      content: "\f019";
-  }
-h1{
-  color:red;
+	content: "\f014";
 }
+.fa-refresh:before{
+	content:"\f021";
+}
+.fa-download:before{
+	content: "\f019";
+}
+h1{
+	color:red;
+}
+/*general Styles*/
+.buttonWrapper{
+  margin:0 auto;
+	width:100px;
+}
+/*end of general styles*/
+/* left panel settings */
+.leftPanel{
+	position: fixed;
+	width: 150px;
+	height: 100%;
+    top:70px;
+	background:#795C5F; /*#235D6F;*/
+	color:#fff;
+	font-size:1.2em;
+  border-radius:5px;
+}
+.leftPanel .fa{
+	color:#fff;
+	text-align:center;
+
+}
+.leftPanel .fa:before{
+	font-size:2em;
+}
+.leftPanel div{
+	width:100%;
+	margin: 50px 0px;
+}
+.leftPanel .fa:hover{
+	outline:1px solid white;
+}
+.leftPanel div span{
+	display:block;
+}
+.leftPanel .patients:before{
+	content:"\f0c0";
+}
+.leftPanel .appointments:before{
+	content:"\f133";
+}
+h1.header{
+  position:fixed;
+  height:70px;
+	color:#D9853B;
+}
+/*end of  left panel styles*/
+/* main panel styles */
+.mainPanel{
+	position:fixed;
+	left:150px;
+  top:70px;
+border-top: 1px solid #795C5F;
+	background:#F5F3EE;
+/* background-color: #C5E5EF; */
+  width:100%;
+  height:100%;
+}
+#mainContent{
+  height:100%;
+  width:auto;
+  padding:15px;
+	overflow:auto;
+}
+
+/*end of  main panel styles*/
+button, input[type="button"]{
+	color: #fff;
+  background-color: #4A96AD; /*#D9853B;*/
+  font-weight: 500;
+	padding:10px;
+	border-radius:3px;
+	border: none;
+	font-size: 20px;
+}
+button.fa{
+		font-size: 20px;
+		outline:0px;
+}
+button.fa-plus{
+	color:#fff;
+	padding: 10px;
+}
+/*end of mainPanel styles*/
+
+/*start of patient details wrapper */
+
+#patientDetails label,#patientDetails p, #patientDetails input,#patientDetails textarea{
+	margin:10px;
+	color: #676262;
+    font-weight: 600;
+    font-size: 20px;
+}
+#patientDetails p{
+	font-size:30px;
+}
+#patientDetails label{
+		width: 150px;
+	    display: inline-block;
+	    text-align: left;
+			vertical-align: bottom;
+}
+#patientDetails input[type="text"],#patientDetails textarea{
+	width: 400px;
+}
+#patientDetails input[type="button"]{
+	background-color:#D9853B;
+		font-size: 20px;
+			color:#fff;
+}
+#mainContent .header input[name='searchstr'] {
+	width: 300px;
+    height: 30px;
+    margin: 10px;
+		display:inline-block;
+}
+#mainContent .header span.fa.fa-search:after{
+	margin: 0px 10px 0px 0px;
+	    content: "\f002";
+	    position: relative;
+	    left: -34px;
+	    top: 2px;
+}
+/*end of patient details wrapper styles */
