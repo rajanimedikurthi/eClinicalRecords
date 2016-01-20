@@ -1,5 +1,7 @@
+var mongodb=require("./../../config/mongoose");
+//var mongodb=mongoose();
   module.exports= {
-    addpatient:function(req,res){
+    addpatient:function(req,res,queryObject){
         res.write("<p> Fill out patient details </p>")
         res.write('<label for="firstname">First name</label><input type="text" name="firstname"></input>');
         res.write('<label for="lastname">Last name</label><input type="text" name="lastname"></input><br/>');
@@ -10,17 +12,19 @@
                             res.write('<label for="medicines">Medicines</label><textarea rows=5  name="medicines" ></textarea> <br/>');
             res.write('<div class="buttonWrapper"><input type="button" value= "Create"> </input></div>');
     },
-    create:function(req,res){
-        res.write("in create callback");
+    create:function(req,res,queryObject){
+console.log("USER"+ queryObject)
+        mongodb.createpatient(queryObject["userdata"]);
+        res.write("Created successfully");
     },
-    update:function(req,res){
+    update:function(req,res,queryObject){
         res.write("in update callback");
     },
-    fetch:function(req,res){
+    fetch:function(req,res,queryObject){
         res.write("<table></table>");
         res.write("</div>");
     },
-    delete:function(req,res){
+    delete:function(req,res,queryObject){
         res.write("in delete callback");
     }
 

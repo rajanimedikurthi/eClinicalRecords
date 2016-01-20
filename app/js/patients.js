@@ -2,8 +2,8 @@ var patients=(function(){
 
 
   var dataaction;
-  var makepatientrequest=function(dataaction){
-    data={"action":dataaction}
+  var makepatientrequest=function(dataaction,postdata){
+    data={"action":dataaction,"userdata":postdata}
     $.ajax({
        url:"/performaction",
        method:"POST",
@@ -22,7 +22,16 @@ var patients=(function(){
     create:function(){
       console.log("create");
       dataaction="create";
-        makepatientrequest("create");
+    var inputs=  $("#patientDetails input[type=text]");
+    var textareas=$("#patientDetails textarea");
+    var user={};
+    inputs.each(function(){
+      user[this.name]=$(this).val();
+    });
+    textareas.each(function(){
+      user[this.name]=$(this).val();
+    });
+        makepatientrequest("create",user);
     },
     delete:function(){
       dataaction="delete";

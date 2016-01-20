@@ -2,8 +2,7 @@ process.env.NODE_ENV=  process.env.NODE_ENV || 'development';
 var http=require('http'),fs=require("./my_modules/fileserver"),
   url = require('url') ,qs=require("querystring");;
   var sjs=require("./my_modules/servercode");
-var mongoose=require("./config/mongoose");
-var db=mongoose();
+
 http.createServer(function(req,res){
     var queryObject;
     if(req.method=="POST"){
@@ -37,15 +36,15 @@ function buildResponse(req,res,queryObject){
    });
 
      if(queryObject["action"]=="fetch"){
-             sjs.actions.fetch(req,res);
+             sjs.actions.fetch(req,res,queryObject);
      }else if(queryObject["action"]=="addpatient"){
-       sjs.actions.addpatient(req,res);
+       sjs.actions.addpatient(req,res,queryObject);
      }else if(queryObject["action"]=="create"){
-       sjs.actions.create(req,res);
+       sjs.actions.create(req,res,queryObject);
      }else if(queryObject["action"]=="update"){
-       sjs.actions.update(req,res);
+       sjs.actions.update(req,res,queryObject);
      }else if(queryObject["action"]=="delete"){
-       sjs.actions.delete(req,res);
+       sjs.actions.delete(req,res,queryObject);
      }
      res.end();
            //debugger;
