@@ -1,4 +1,4 @@
-var __dirPath="E:/PegaWork/LPProjects/eClinicalRecords/app/";
+var __dirPath="D:/PegaWork/LPProjects/eClinicalRecords/app/";
 module.exports = function(urllink, req, res, callback) {
    var file;
     var fs = require('fs'),path=require('path'),url=require("url");

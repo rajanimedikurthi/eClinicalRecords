@@ -3,7 +3,21 @@ var patients=(function(){
 
   var dataaction;
   var makepatientrequest=function(dataaction,postdata){
-    data={"action":dataaction,"userdata":postdata}
+    var data={"action":dataaction}
+
+    if(postdata){
+      //foreach( key in postdata){
+    //    data[key]=postdata[key];
+    //  }
+    for (var prop in postdata) {
+        // skip loop if the property is from prototype
+        if(!postdata.hasOwnProperty(prop)) continue;
+
+        // your code
+      data[prop] = postdata[prop];
+    }
+      //data["userdata"]={"Test": "Test111"}
+    }
     $.ajax({
        url:"/performaction",
        method:"POST",
@@ -29,7 +43,7 @@ var patients=(function(){
       user[this.name]=$(this).val();
     });
     textareas.each(function(){
-      user[this.name]=$(this).val();
+    user[this.name]=$(this).val();
     });
         makepatientrequest("create",user);
     },

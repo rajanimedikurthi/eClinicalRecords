@@ -11,7 +11,10 @@ http.createServer(function(req,res){
             queryData += data;
         });
         req.on('end', function() {
+          //console.log("querydata"+ JSON.parse(queryData));
             queryObject = qs.parse(queryData);
+
+
             buildResponse(req,res,queryObject);
         });
     }else{
@@ -34,17 +37,24 @@ function buildResponse(req,res,queryObject){
         res.writeHead(200,{
             'Content-Type':'text/plain'
    });
+   var userdata={};
 
+   for (var prop in queryObject) {
+       // skip loop if the property is from prototype
+       if(!(prop=="action"))
+       userdata[prop]=queryObject[prop]
+   }
+   console.log("after parsing"+ userdata);
      if(queryObject["action"]=="fetch"){
-             sjs.actions.fetch(req,res,queryObject);
+             sjs.actions.fetch(req,res,userdata);
      }else if(queryObject["action"]=="addpatient"){
-       sjs.actions.addpatient(req,res,queryObject);
+       sjs.actions.addpatient(req,res,userdata);
      }else if(queryObject["action"]=="create"){
-       sjs.actions.create(req,res,queryObject);
+       sjs.actions.create(req,res,userdata);
      }else if(queryObject["action"]=="update"){
-       sjs.actions.update(req,res,queryObject);
+       sjs.actions.update(req,res,userdata);
      }else if(queryObject["action"]=="delete"){
-       sjs.actions.delete(req,res,queryObject);
+       sjs.actions.delete(req,res,userdata);
      }
      res.end();
            //debugger;
