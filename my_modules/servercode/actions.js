@@ -1,4 +1,4 @@
-var config=require('./env/developer') ;
+var config=require('./../config/env/developer') ;
 var mongodb=require('mongodb');
 var mongoclient=mongodb.MongoClient;
 var mydb;
@@ -48,14 +48,17 @@ module.exports={
            patientsdb =db.collection('patients');
           var cursor= patientsdb.find().limit(10);
           res.write("<Table>");
-          cursor.each(function(err,doc){
-            if(!err){
-               res.write("<td>"+ +"</td>");
-            }
+          cursor.each(function(err1,doc){
+            if(!err1){
+               res.write("<td>"+ "abc"+"</td>");
+            }else
+            res.write("error" + err1);
 
           });
           res.write("</Table>");
            db.close();
-         }});
+         }else {
+           console.log("err" +err);
+         } });
       }
   }
