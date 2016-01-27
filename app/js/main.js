@@ -6,17 +6,22 @@ $( document ).ready(function() {
     $(".mainPanel").height(viewportHeight-(top+1));
         $(".mainPanel").width(viewportWidth-150);
     /* Adding event to "My patients"  */
-    $(".leftPanel .patients").on("click" , function(){
-      loadfile( "patients.js", function() {
-        $("#mainContent").html("<div class='header'><span class='fa fa-search'><input type='text' name='searchstr'></span></input><button class=\"fa fa-plus\" id=\"addrecord\">Add Patient </button></div><div id='patientDetails'></div>");
-       patients.fetch();
-     });
-});
+    $(".leftPanel .patients").on("click" , patientUI);
     $(".leftPanel .appointments").on("click" , function(){
              appointments.show();
       });
-
+patientUI();
  });
+ $(document).on( "click", '#patientDetails  input[value="Cancel"]', function(){
+       $(document).off( "click", '.patientstable  .editrecord');
+  patientUI()
+})
+ function patientUI(){
+   loadfile( "patients.js", function() {
+      $("#mainContent").html("<div id='patientDetails'></div>");
+     patients.fetch();
+   });
+ }
  function loadfile(src, callback) {
    var scriptag = document.createElement('script');
    document.getElementsByTagName('head')[0].appendChild(scriptag);

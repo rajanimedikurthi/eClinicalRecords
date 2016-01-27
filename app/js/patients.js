@@ -1,74 +1,89 @@
 var patients=(function(){
-
-
-  var dataaction;
-  var makepatientrequest=function(dataaction,postdata){
-    var data={"action":dataaction}
-
-    if(postdata){
-      //foreach( key in postdata){
-      //    data[key]=postdata[key];
-      //  }
-      for (var prop in postdata) {
-        // skip loop if the property is from prototype
-        if(!postdata.hasOwnProperty(prop)) continue;
-
-        // your code
-        data[prop] = postdata[prop];
-      }
-      //data["userdata"]={"Test": "Test111"}
-    }
+  var makepatientrequest=function(data){
     $.ajax({
       url:"/performaction",
       method:"POST",
       data:data
     }).success(function(msg){
+
       $("#patientDetails").html(msg);
+
     }).error(function(){
       alert("Error");
     });
+  };
+  var getPatientDetails=function(data){
+    data=data?data:{};
+    var inputs=  $("#patientDetails input[type=text]");
+    var textareas=$("#patientDetails textarea");
+    var user={};
+    inputs.each(function(){
+      data[this.name]=$(this).val();
+    });
+    textareas.each(function(){
+      data[this.name]=$(this).val();
+    });
+    return data;
   }
   return {
-    addpatient:function(){
-      dataaction="addpatient";
-      makepatientrequest("addpatient");
+    addpatient:function(data){
+      data=data||{};
+      data.action="addpatient";
+      makepatientrequest(data);
     },
-    create:function(){
-      console.log("create");
-      dataaction="create";
-      var inputs=  $("#patientDetails input[type=text]");
-      var textareas=$("#patientDetails textarea");
-      var user={};
-      inputs.each(function(){
-        user[this.name]=$(this).val();
-      });
-      textareas.each(function(){
-        user[this.name]=$(this).val();
-      });
-      makepatientrequest("create",user);
+    create:function(data){
+        data=data||{};
+      data.action="create";
+      makepatientrequest(getPatientDetails(data));
     },
-    delete:function(){
-      dataaction="delete";
-      makepatientrequest("delete");
+    delete:function(data){
+        data=data||{};
+      data.action="delete";
+      makepatientrequest(data);
     },
-    fetch:function(){
-      dataaction="fetch";
-      makepatientrequest("fetch");
+    fetch:function(data){
+        data=data||{};
+      data.action="fetch";
+      makepatientrequest(data);
     },
-    update:function(){
-      dataaction="update";
-      makepatientrequest("update");
+    update:function(id){
+      var data= {};
+      data.action="update";
+      data.id=id;
+      makepatientrequest(getPatientDetails(data));
     }
+
   }
 
 })();
+
 $(document).on('click', '#addrecord', function(){
   patients.addpatient();
 });
-$(document).on('click', 'input[type="button"]', function(){
+$(document).on('click', 'input[value="Create"]', function(){
   patients.create();
 });
+$(document).on('click', '.fa-search', function(event){
+  var target =event.target;
+  if(target==this){ //becasue of search icon psuedo class
+        patients.fetch({searchstr:$("input[name='searchstr']").val().trim()});
+  }
 
+});
+$(document).on('click', '.fa-back', function(event){
+        patients.fetch();
+});
+$(document).on('click', 'input[value="Update"]', function(){
+  patients.update($(this).attr("id"));
+});
+$(document).on( "click", '.patientstable  .fa-edit', function(){
+  var data={"edit":true ,"id":$(this).attr("id")};
+  patients.fetch(data);
+});
+$(document).delegate( '.patientstable  .fa-trash-o','click', function(){
+  var data={"id":$(this).attr("id")};
+  patients.delete(data);
+});
 $("body").on("click", ".datepicker", function(){
   $(this).datepicker({
     changeMonth: true,

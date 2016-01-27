@@ -1,0 +1,63 @@
+
+
+/*start of patient details wrapper */
+
+#patientDetails label,#patientDetails p, #patientDetails input,#patientDetails textarea{
+	margin:10px;
+	color: #676262;
+    font-weight: 600;
+    font-size: 20px;
+}
+#patientDetails p{
+	font-size:30px;
+}
+#patientDetails label{
+		width: 150px;
+	    display: inline-block;
+	    text-align: left;
+			vertical-align: bottom;
+}
+ #patientDetails input[type="button"]{
+   color:#fff;
+ }
+#patientDetails input[type="text"],#patientDetails textarea{
+	width: 400px;
+}
+#addrecord,.patientstable input[type="button"],  .buttonWrapper input[type="button"]{
+			color:#fff;
+      background-color:#4A96AD;
+}
+.patientstable button.fa{
+  color:#4A96AD;
+  background:none;
+  font-size:25px;
+
+}
+#mainContent .header input[name='searchstr'] {
+	width: 300px;
+    height: 30px;
+    margin: 10px;
+		display:inline-block;
+}
+#mainContent .header span.fa.fa-search:after{
+	margin: 0px 10px 0px 0px;
+	    content: "\f002";
+	    position: relative;
+	    left: -34px;
+	    top: 2px;
+}
+.msg{
+	font-size:20px;
+}
+/*end of patient details wrapper styles */
+
+.patientstable{
+  width: 100%;
+  font-size: 20px;
+  text-align: left;
+  margin: 20px 10px 10px;
+  border-collpase:collapse;
+}
+.patientstable tbody tr{
+  padding :10px;
+}

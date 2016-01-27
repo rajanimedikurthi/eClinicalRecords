@@ -1,14 +1,16 @@
+@import  url("patients.css");
 @font-face {
 	font-family: 'FontAwesome';
 	src:  url('../icons/fonts/fontawesome-webfont.woff') ;
 	font-weight: normal;
 	font-style: normal;
 }
-
+/* font awesome icons */
 .fa{
 	font: normal normal normal 24px/1 FontAwesome;
 	color: #318EC3;
 	display:inline-block;
+	margin:0 2px;
 
 }
 .fa-plus:before{
@@ -23,13 +25,23 @@
 .fa-download:before{
 	content: "\f019";
 }
+.fa-edit:before{
+	 content:"\f044";
+}
+.fa-back:before{
+	content:"\f112"
+}
+button.fa{
+	background:none;
+}
+/*end of font awesome icons */
 h1{
 	color:red;
 }
 /*general Styles*/
 .buttonWrapper{
   margin:0 auto;
-	width:100px;
+	width:300px;
 }
 /*end of general styles*/
 /* left panel settings */
@@ -94,12 +106,18 @@ border-top: 1px solid #795C5F;
 /*end of  main panel styles*/
 button, input[type="button"]{
 	color: #fff;
-  background-color: #4A96AD; /*#D9853B;*/
+  background-color: #bdbdbd; /*#D9853B;*/
   font-weight: 500;
 	padding:10px;
 	border-radius:3px;
 	border: none;
 	font-size: 20px;
+}
+ input[type="button"].strong{
+	  background-color: #e59400; /*#D9853B;*/
+}
+input[type="button"].simple{
+	 background-color:#4A96AD;
 }
 button.fa{
 		font-size: 20px;
@@ -110,43 +128,3 @@ button.fa-plus{
 	padding: 10px;
 }
 /*end of mainPanel styles*/
-
-/*start of patient details wrapper */
-
-#patientDetails label,#patientDetails p, #patientDetails input,#patientDetails textarea{
-	margin:10px;
-	color: #676262;
-    font-weight: 600;
-    font-size: 20px;
-}
-#patientDetails p{
-	font-size:30px;
-}
-#patientDetails label{
-		width: 150px;
-	    display: inline-block;
-	    text-align: left;
-			vertical-align: bottom;
-}
-#patientDetails input[type="text"],#patientDetails textarea{
-	width: 400px;
-}
-#patientDetails input[type="button"]{
-	background-color:#D9853B;
-		font-size: 20px;
-			color:#fff;
-}
-#mainContent .header input[name='searchstr'] {
-	width: 300px;
-    height: 30px;
-    margin: 10px;
-		display:inline-block;
-}
-#mainContent .header span.fa.fa-search:after{
-	margin: 0px 10px 0px 0px;
-	    content: "\f002";
-	    position: relative;
-	    left: -34px;
-	    top: 2px;
-}
-/*end of patient details wrapper styles */
